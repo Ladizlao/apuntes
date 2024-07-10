@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Práctico de JavaScript DOM</title>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            min-height: 100dvh;
+            background: linear-gradient(to bottom, white, rgb(148, 22, 220));
+
+        }
+
+        .ventana {
+            padding-top: 20px;
+            height: 100%;
+            width: 60%;
+            margin: auto;
+        }
+
+        p {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .grupo {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type=text],
+        button {
+            padding: 5px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .btngroup {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+
+        @media (orientation:portrait) {
+            .ventana {
+                width: 100%;
+            }
+        }
+        .html::-webkit-scrollbar {
+            width: 7px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1>Examen Práctico de JavaScript DOM</h1>
+    <h2>Imanol,Rodriguez Laborde,7°3</h2>
+    <div class="ventana">
+        <h3>Lista de compras</h3>
+        <div class="grupo">
+            <input type="text" id="nuevoValor" placeholder="Ingrese un nuevo valor">
+            <div class="btngroup">
+                <button id="add-paragraph" onclick="AgregarParrafo()">Agregar Item</button>
+                <button id="highlight" onclick="resaltarParrafos()">Resaltar Items</button>
+                <button id="sss" onclick="borrarRe()">Quitar Resalto</button>
+                <button id="hide-content" onclick="ocultarContenido()">Ocultar Lista</button>
+                <button id="show-content" class="hidden" onclick="mostrarContenido()">Mostrar Lista</button>
+            </div>
+        </div>
+        <hr>
+        <div id="content">
+            <p>Desengrasante 500ml.</p>
+            <hr>
+        </div>
+    </div>
+    <script>
+        // Escribe tu código JavaScript aquí
+        
+        function AgregarParrafo() { //creo la funcion AgregarParrafo()
+            let parra = document.createElement("p"); //le asignamos a parra document.createElement("p") que crea p
+            document.body.appendChild(parra)
+            parra.textContent = document.getElementById("nuevoValor").value //hacemos que el contenido en texto de parra sea igual que al escrito en la barra
+            
+            if (document.getElementById("nuevoValor").value != "") { //hacemos un if diciendo que si los datos estan vacios no pase nada
+                let sal = document.createElement("hr"); //le asignamos a sal document.createElement("hr") que crea hr
+                document.body.appendChild(parra)
+
+                let futer = document.getElementById("content"); //asignamos que las coasas esten dentro de donde content 
+                futer.appendChild(parra) //escribimos lo que le asignamos a parra (<p>"texto escrito arriba"</p>) donde fue indicado
+                futer.appendChild(sal)  //escribimos lo que asignamos a sal(<hr></hr>) donde fue indicado
+
+                document.getElementById("nuevoValor").value = "";//asignamos la parte donde ingresamos los datos que vuelva a estar en blanco
+            }
+        }
+
+
+
+        function resaltarParrafos() {//hacemos que todos los <p></p> tengan la clase "highlight"
+            let pe = document.querySelectorAll("div > p") //buscamos todos los p hijos de div
+            pe.forEach((elemento) => { //hacemos un for que pase por todos los elementos
+
+                elemento.classList.add("highlight")//hacemos que a todos los elementos se le agregue la clase highlight
+
+            });
+        }
+
+        function borrarRe() {//hacemos que todos los <p></p> que tengan la clase "highlight" no la tengan mas
+            let pe = document.querySelectorAll("div > p")//buscamos todos los p hijos de div
+            pe.forEach((elemento) => {//hacemos un for que pase por todos los elementos
+
+                elemento.classList.remove("highlight")//hacemos que a todos los elementos se le borre la clase "highlight"
+
+            });
+        }
+
+
+        function ocultarContenido() {//ocultamos todos lo que agregamos
+            let ocu = document.getElementById("content");//conseguimos el elemento id para saber donde poner la clase
+            let mos = document.getElementById("show-content");//conseguimos el elemento id para saber donde quitar la clase
+            ocu.classList.add("hidden")//agregamos la clase hidden
+            mos.classList.remove("hidden")//borramos la clase hidden
+        }
+
+        function mostrarContenido() {//mostramos todos lo que agregamos
+            let ocu = document.getElementById("content");//conseguimos el elemento id para saber donde poner la clase
+            let mos = document.getElementById("show-content");//conseguimos el elemento id para saber donde quitar la clase
+            mos.classList.add("hidden")//agregamos la clase hidden
+            ocu.classList.remove("hidden")//borramos la clase hidden
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación del DOM</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <main>
+        <div class="tarjeta" id="card">
+            <h3>Soy una tarjeta</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit provident recusandae perspiciatis
+                explicabo,
+                pariatur modi qui dignissimos necessitatibus incidunt vel esse blanditiis molestiae sint excepturi
+                tempore
+                asperiores. Animi, aliquid odit!</p>
+            <ul>
+                <li class="texto1">Empanada</li>
+                <li class="subrayado">Milanesa</li>
+                <li class="subrayado">Pan casero</li>
+                <li>choclo</li>
+                <li>papas</li>
+            </ul>
+            <div class="botonera">
+                <button id="remover" onclick="Remover()">remover clase</button>
+                <button id="agregar" onclick="Agregar()">agregar clase</button>
+            </div>
+        </div>
+        <footer id="piepagina"></footer>
+        
+    </main>
+
+    <button class="bottonmenu" onclick="mostrarMenu()">a</button>
+        <aside>
+            <ul>
+                <li>link 1</li>
+                <li>link 2</li>
+                <li>link 3</li>
+                <li>link 4</li>
+                <li>link 5</li>
+            </ul>
+
+            <button popovertarget="ventanita">mostrar modal o poplip</button>
+            <div popover id="ventanita">aca va el contenido y botones y bla <br>
+            <h2>titulos</h2>
+
+            </div>
+
+        </aside>
+    <!-- El script tiene que ir arriba del body -->
+    <script src="practica.js"></script>
+</body>
+
+</html>
